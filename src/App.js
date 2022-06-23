@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 
 import React from "react";
+import { Posts } from "./post/posts";
 export class App extends React.Component {
   constructor(props) {
     super(props);
@@ -17,8 +18,15 @@ export class App extends React.Component {
           <Link to="/signup"><button>signup</button></Link>
        
  
-          <button>Login</button>
+          <Link to="/signIn"><button>signIn</button></Link>
+
         </header>
+       
+        <Link to="/posts"><button>Posts</button></Link>
+        
+        <Link to="/createPost"><button>Create Post</button></Link>
+        
+
       </div>
     );
   }
