@@ -10,6 +10,8 @@ import { suggestFriend } from "./friends/suggestFriend";
 import { friendRequest } from "./friends/friendRequest";
 import { feeds } from "./feeds/feeds";
 import { Trends } from "./trends/trends";
+import trendHashtag  from "./trends/trendHashtag";
+import { updateUser } from "./auth/updateUser";
 
 
 export const Routes = () => {
@@ -21,18 +23,19 @@ export const Routes = () => {
           <Route path="/" exact component={App} />
           <Route path="/signup" exact component={SignUp} />
           <Route path="/signIn" exact component={signIn} />
+          <Route path="/updateProfile" exact component={updateUser} />
 
           <Route path="/posts" exact component={Posts} />
           <Route path="/createPost" exact component={createPost} />
           <Route path="/post/:postId" exact component={updatePost} />
 
           <Route path="/suggestFriends" exact component={suggestFriend} />
-
           <Route path="/requestFriend" exact component={friendRequest} />
 
           <Route path="/feeds" exact component={feeds} />
 
           <Route path="/trends" exact component={Trends} />
+          <Route path="/trend/:hashtag" exact component={trendHashtag} />
 
           </Switch>
         </BrowserRouter>

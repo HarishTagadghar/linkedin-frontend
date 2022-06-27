@@ -32,29 +32,36 @@ export const signin = user => {
     .catch(err => console.log(err));
 };
 
-export const authenticate = (data) => {
-  if (typeof window !== "undefined") {
-    localStorage.setItem("jwt", JSON.stringify(data));
-  }
-};
+export const updateProfileApi = (token , user) => {
+  return fetch(`${API}/auth/update` , {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      token:token
+    },
+    body: JSON.stringify(user)
+  })
+  .then(response => response.json())
+  .catch(err => console.log(err))
+}
+export const getUserByUserIdAPI = (userId) => {
+  return fetch(`${API}/auth/${userId}` , {
+    method:"GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    }
+  })
+  .then(response => response.json())
+  .catch(err => console.log(err))
+
+}
 
 export const signout = next => {
   if (typeof window !== "undefined") {
     localStorage.removeItem("jwt");
     next();
-
-  
   }
 };
 
-export const  isAuthenticated = () => {
-  if (typeof window == "undefined") {
-    return false;
-  }
-  if (localStorage.getItem("jwt")) {
-    return JSON.parse(localStorage.getItem("jwt"));
-  } else {
-    return false;
-
-  }
-};

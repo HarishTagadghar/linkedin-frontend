@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 
 import React from "react";
+import { getToken } from "./localStorage";
 export class App extends React.Component {
 
 
@@ -11,11 +12,13 @@ export class App extends React.Component {
         <header className="App-header">
           <p>LinkedIn App</p>
          
-          <Link to="/signup"><button>signup</button></Link>
-       
- 
+          {getToken()
+          ? <Link to="/updateProfile"><button>Update Profile</button></Link>
+          : <div>
+            <Link to="/signup"><button>signup</button></Link>
           <Link to="/signIn"><button>signIn</button></Link>
-
+          </div>
+}
         </header>
        
         <Link to="/posts"><button>Posts</button></Link>
