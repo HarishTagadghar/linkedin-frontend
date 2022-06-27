@@ -1,5 +1,5 @@
 import React from "react";
-import { token } from "../token";
+import { getToken } from "../localStorage";
 
 import {createPostApi} from "./helper/post"
 
@@ -26,7 +26,7 @@ export class createPost extends React.Component {
   async submitApi() {
   const post = this.state
  
-  const createdPost = await createPostApi(post ,token)
+  const createdPost = await createPostApi(post ,getToken())
   const state = this.state
   state.text = ""
   state.imageUrl = ""

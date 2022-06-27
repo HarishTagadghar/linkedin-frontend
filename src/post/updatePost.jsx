@@ -1,6 +1,6 @@
 import React from "react";
 import {  withRouter } from "react-router-dom";
-import { token } from "../token";
+import { getToken } from "../localStorage";
 import { getPostByPostIdApi, updatePostAPi } from "./helper/post";
 
 class updatePost extends React.Component {
@@ -24,7 +24,7 @@ class updatePost extends React.Component {
   async getPost() {
     const postId = this.props.match.params.postId;
 
-    const post = await getPostByPostIdApi(postId, token);
+    const post = await getPostByPostIdApi(postId, getToken());
     const state = this.state;
     state.imageUrl = post.imageUrl;
     state.text = post.text;
@@ -40,7 +40,7 @@ class updatePost extends React.Component {
         text:this.state.text,
         imageUrl:this.state.imageUrl
     }
-    await updatePostAPi(post , this.state.postId , token )
+    await updatePostAPi(post , this.state.postId , getToken() )
     const state = this.state
     state.text = ""
     state.imageUrl = ""

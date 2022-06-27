@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { authenticate, isAutheticated, signin } from "./helper/index";
+import { getUserId, setUser } from "../localStorage";
+import { signin } from "./helper/index";
 
 
 export class signIn  extends React.Component {
@@ -26,13 +27,14 @@ export class signIn  extends React.Component {
         const user = this.state
         try {
             const data = await signin(user)
-            await authenticate(data)
+            setUser(data)
             const state = this.state
             state.email = ""
             state.password = ""
             state.redirect = true
             this.setState(() => ({ state}))
             console.log("login success" , data);
+            console.log("state" , this.state);
 
            
         } catch (error) {
@@ -43,7 +45,7 @@ export class signIn  extends React.Component {
         return(
           
             <div>
-                {this.state.redirect ? <Redirect to="/post" /> : ""}
+                {this.state.redirect || getUserId() ? <Redirect to="/feeds" /> : ""}
                 <input type="email"
                  placeholder="Email"
                  name="email" 
