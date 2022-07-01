@@ -1,5 +1,4 @@
 import React from "react";
-import { getToken } from "../localStorage";
 
 import { addFriendRequestApi, getAllUsersApi } from "./helper/friend";
 
@@ -23,7 +22,7 @@ export class suggestFriend extends React.Component {
     const friendRequestInfo ={
         friendWithUserId:friendId
     }
-    const friendRequest = await addFriendRequestApi(friendRequestInfo ,getToken() )
+    const friendRequest = await addFriendRequestApi(friendRequestInfo )
     console.log("request send" , friendRequest);
   }
   componentDidMount() {

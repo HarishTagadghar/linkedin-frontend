@@ -56,6 +56,7 @@ export class Posts extends React.Component {
     render() {
         return (
             <div style={{ textAlign: "center" }}>
+                <Link to="/myFriends" ><button>My Friends</button></Link>
                 <h1>posts</h1>
 
                 {this.state.posts ? (

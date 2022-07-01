@@ -23,7 +23,7 @@ import { getTrendByHashtagApi } from "./helper/trends";
         state.trends = trend
         state.hashtag = hashtag
         this.setState(()=> ({state}))
-        trend.map(trends => {
+        trend.forEach(trends => {
             this.getPostByPostId(trends.postId)
         })
     }

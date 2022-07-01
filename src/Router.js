@@ -12,6 +12,7 @@ import { feeds } from "./feeds/feeds";
 import { Trends } from "./trends/trends";
 import trendHashtag  from "./trends/trendHashtag";
 import { updateUser } from "./auth/updateUser";
+import { MyFriends } from "./friends/myFriends";
 
 
 export const Routes = () => {
@@ -31,6 +32,7 @@ export const Routes = () => {
 
           <Route path="/suggestFriends" exact component={suggestFriend} />
           <Route path="/requestFriend" exact component={friendRequest} />
+          <Route path="/myFriends" exact component={MyFriends} />
 
           <Route path="/feeds" exact component={feeds} />
 

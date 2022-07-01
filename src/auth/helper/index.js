@@ -1,4 +1,5 @@
 import { API } from "../../backend";
+import { removeUser } from "../../localStorage";
 
 export const signup = user => {
 
@@ -58,10 +59,9 @@ export const getUserByUserIdAPI = (userId) => {
 
 }
 
-export const signout = next => {
-  if (typeof window !== "undefined") {
-    localStorage.removeItem("jwt");
-    next();
+export const signout = () => {
+  
+    removeUser()
   }
-};
+
 

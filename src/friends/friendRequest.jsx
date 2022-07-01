@@ -1,5 +1,4 @@
 import React from "react";
-import { getToken } from "../localStorage";
 import { deleteFriendRequestApi, getAllFriendRequestApi, getUserByUserIdApi, updateFriendStatusApi } from "./helper/friend";
 
 export class friendRequest extends React.Component {
@@ -14,7 +13,7 @@ export class friendRequest extends React.Component {
     }
     async getAllFriendRequest() {
 
-        const friendRequests = await getAllFriendRequestApi(getToken())
+        const friendRequests = await getAllFriendRequestApi()
         const state = this.state
         state.friendRequest = friendRequests
         this.setState(() => ({ state }))
@@ -29,12 +28,12 @@ export class friendRequest extends React.Component {
         this.setState(() => ({ state }))
     }
     async updateFriendStatus(friendWithUserId){
-        const updated = await updateFriendStatusApi(friendWithUserId , getToken())
+        const updated = await updateFriendStatusApi(friendWithUserId )
         console.log("updated status" , updated);
         this.getAllFriendRequest()
     }
     async deleteFriendRequest(userId){
-        const deleted = await deleteFriendRequestApi(userId , getToken())
+        const deleted = await deleteFriendRequestApi(userId)
         console.log("updated status" , deleted);
         this.getAllFriendRequest()
     }

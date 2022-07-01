@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import React from "react";
 import { getToken } from "./localStorage";
+import { signout } from "./auth/helper";
 export class App extends React.Component {
 
 
@@ -13,7 +14,11 @@ export class App extends React.Component {
           <p>LinkedIn App</p>
          
           {getToken()
-          ? <Link to="/updateProfile"><button>Update Profile</button></Link>
+          ?<div>
+             <Link to="/updateProfile"><button>Update Profile</button></Link>
+              <Link to="/"><button onClick={() => (signout())}>Sign OUt</button></Link>
+          </div>
+
           : <div>
             <Link to="/signup"><button>signup</button></Link>
           <Link to="/signIn"><button>signIn</button></Link>
