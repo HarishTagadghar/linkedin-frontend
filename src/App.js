@@ -39,6 +39,9 @@ export class App extends React.Component {
         <br />
 
         <Link to="/trends"><button>Trends</button></Link>
+        <br />
+
+        <Link to="/chatList"><button>Chat</button></Link>
 
       </div>
     );

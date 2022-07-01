@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {getUserId } from "../localStorage";
 import { getAllFriendsIdsApi, getUserByUserIdApi } from "./helper/friend";
 
@@ -27,7 +28,6 @@ export class MyFriends extends React.Component {
         const state = this.state
         state.friends[userId] = user
         this.setState(()=> ({state}))
-        console.log(this.state);
     }
     componentDidMount(){
         this.getFriendsIds()
@@ -41,6 +41,7 @@ export class MyFriends extends React.Component {
                     return (
                         <div key={i}>
                             {i + 1}) {this.state.friends[ids]?.name.toUpperCase()}
+                            <Link style={{marginLeft:"10px"}} to={`/chat/${ids}`} >Send Message</Link>
                         </div>
                     )
                 })}

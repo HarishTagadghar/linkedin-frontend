@@ -13,6 +13,8 @@ import { Trends } from "./trends/trends";
 import trendHashtag  from "./trends/trendHashtag";
 import { updateUser } from "./auth/updateUser";
 import { MyFriends } from "./friends/myFriends";
+import chat  from "./chat/chat";
+import chatList from "./chat/chatList";
 
 
 export const Routes = () => {
@@ -39,6 +41,8 @@ export const Routes = () => {
           <Route path="/trends" exact component={Trends} />
           <Route path="/trend/:hashtag" exact component={trendHashtag} />
 
+          <Route path="/chat/:friendId" exact component={chat} />
+          <Route path="/chatList" exact component={chatList}/>
           </Switch>
         </BrowserRouter>
     )
